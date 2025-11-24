@@ -4,8 +4,11 @@
 PORT := /dev/cu.usbserial-54F70184691 #LilyGO
 BAUD := 115200
 
+ACS := Access_Control_System
+
+
 # Default target
-Access_Control_System:
+ACS:
 	@echo "🚀 Uploading sketch to ESP32..."
 	pio run -t clean
 	pio run -e Access_Control_System -t upload

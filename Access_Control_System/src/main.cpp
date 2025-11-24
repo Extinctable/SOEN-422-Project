@@ -1,18 +1,26 @@
 #include <Arduino.h>
-
-// put function declarations here:
-int myFunction(int, int);
+#include "sensors.h"
+#include "actuators.h"
+#include "fsm.h"
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+    Serial.begin(115200);
+    Serial.println("\n[System Boot] Initializing Access Control...");
+
+    // 1. Init Hardware
+    Sensors_Init();
+    Actuators_Init();
+
+    // 2. Init Logic
+    FSM_Init();
+
+    Serial.println("[System Boot] Ready. Waiting for command...");
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+    // The main loop simply ticks the state machine
+    FSM_Run();
+    
+    // Small delay to prevent CPU hogging
+    delay(50);
 }
