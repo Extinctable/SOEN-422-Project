@@ -5,7 +5,7 @@
 
 // Pin Definitions
 #define PIN_POTENTIOMETER 34
-#define PIN_IR_SENSOR     12
+#define PIN_IR_SENSOR     25
 
 // Function Declarations
 void Sensors_Init();
